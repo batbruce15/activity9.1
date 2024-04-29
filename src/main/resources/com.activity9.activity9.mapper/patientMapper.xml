@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.activty9.activty9.mappers.patientMapper">
+    <resultMap id="patientResultMap" type="com.activty9.activty9.models.patient">
+        <id property="id" column="id"/>
+        <result property="nom" column="nom"/>
+        <result property="prenom" column="prenom"/>
+        <result property="sexe" column="sexe"/>
+        <result property="date_naissance" column="date_naissance"/>
+        <result property="numero_telephone" column="numero_telephone"/>
+        <result property="adresse" column="adresse"/>
+    </resultMap>
+
+    <select id="getAll" resultMap="patientResultMap"> SELECT * FROM cabinet.patient </select>
+
+    <select id="getById" parameterType="int" resultMap="patientResultMap"> SELECT * FROM cabinet.patient WHERE id = #{id} </select>
+
+    <select id="getByName" parameterType="String" resultMap="patientResultMap"> SELECT * FROM cabinet.patient WHERE nom = #{nom} </select>
+
+    <insert id="insert" parameterType="com.activty9.activty9.models.patient">
+        INSERT INTO cabinet.patient(id, nom, prenom, sexe, date_naissance, numero_telephone, adresse)
+        VALUES (#{id}, #{nom}, #{prenom}, #{sexe}, #{date_naissance}, #{numero_telephone}, #{adresse} )
+    </insert>
+</mapper>

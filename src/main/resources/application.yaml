@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/sb_002
+    username: postgres
+    password: admin
+
+jpa:
+  properties:
+    hibernate:
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+  hibernate:
+    ddl-auto: update
+
+server:
+  port: 8081
+
+myBatis:
+  mapper-locations:
+    - classpath:com.activity9.activity9.mapper/*.xml
